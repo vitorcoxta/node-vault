@@ -41,6 +41,8 @@ module.exports = (config = {}) => {
   const rp = (config['request-promise'] || originalRp).defaults(rpDefaults);
   const client = {};
 
+  client.ApiResponseError = ApiResponseError;
+
   function handleVaultResponse(response) {
     if (!response) return Promise.reject(new VaultError('No response passed'));
     debug(response.statusCode);
